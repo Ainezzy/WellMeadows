@@ -1,18 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from "./Pages/Login";
-import SignUpPage from "./Pages/Register";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import routes from "./Routes";
+import { Suspense } from "react";
+
+const router = createBrowserRouter(routes);
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-      </Routes>
-    </Router>
-  );
+    <Suspense fallback={"Loading..."}>
+      <RouterProvider router={router} />
+    </Suspense>
+  )
 }
 
-export default App;
-
+export default App
